@@ -1,0 +1,86 @@
+{
+  "treeId": "ml-learning",
+  "title": "ML learning",
+  "category": "Mathematics",
+  "difficulty": "easy",
+  "description": "Tree regarding ML learning",
+  "version": "1.0",
+  "estimatedMonths": 3,
+  "totalNodes": 3,
+  "icon": "school",
+  "nodes": [
+    {
+      "id": "node-yrkerr",
+      "label": "ML",
+      "description": "Machine Learnign",
+      "icon": "school",
+      "zone": "ML",
+      "resources": [
+        {
+          "id": "res-x2j99m",
+          "title": "t",
+          "url": "https://r",
+          "type": "docs",
+          "author": "",
+          "estimatedHours": 1,
+          "isFree": true
+        }
+      ],
+      "requires": []
+    },
+    {
+      "id": "node-hwm9c8",
+      "label": "Dimensionality reduction methods",
+      "description": "Dimensionality reduction methods to reduce source feature numbers (d) and create new subspace (k)",
+      "icon": "school",
+      "zone": "ML",
+      "resources": [
+        {
+          "id": "res-3g46oo",
+          "title": "r",
+          "url": "https://",
+          "type": "video",
+          "author": "",
+          "estimatedHours": 1,
+          "isFree": true
+        }
+      ],
+      "requires": [
+        "node-yrkerr"
+      ]
+    },
+    {
+      "id": "node-a1zldy",
+      "label": "PCA",
+      "description": "Principal Component Analysis (PCA) — Step-by-step\n1. Standardize the data using StandardScaler (if appropriate).\n2. Compute the covariance matrix to measure variances and relationships between features.\n3. Calculate eigenvectors and their corresponding eigenvalues from the covariance matrix.\n4. Sort eigenvectors by their corresponding eigenvalues in descending order.\n5. Select the top k eigenvectors based on the amount of explained variance.\n6. Construct the projection matrix W, where each selected eigenvector represents one column.\n7. Multiply the standardized data matrix by W to project the data onto the new subspace.\n8. Use the resulting principal components as new features for further analysis or modeling.",
+      "icon": "school",
+      "zone": "ML",
+      "resources": [
+        {
+          "id": "res-iqr3m3",
+          "title": "My Github branch",
+          "url": "https://github.com/Nleshin/ml_projects/tree/pca",
+          "type": "docs",
+          "author": "Me",
+          "estimatedHours": 1,
+          "isFree": true
+        }
+      ],
+      "requires": [
+        "node-hwm9c8"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-node-yrkerr-node-hwm9c8",
+      "source": "node-yrkerr",
+      "target": "node-hwm9c8"
+    },
+    {
+      "id": "e-node-hwm9c8-node-a1zldy",
+      "source": "node-hwm9c8",
+      "target": "node-a1zldy"
+    }
+  ]
+}

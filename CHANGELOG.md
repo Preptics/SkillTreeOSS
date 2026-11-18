@@ -1,9 +1,38 @@
 # Changelog
 
-All notable changes to SkilleTreeOSS are documented here.
+All notable changes to SkillTreeOSS are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 Versioning follows [Semantic Versioning](https://semver.org/).
+
+---
+
+## [0.9.0] — 2026-11-18
+
+SkillTreeOSS joins Preptics LLC and moves to **skilltree.preptics.com**.
+
+### Changed
+- **Stewardship** — the project is maintained by Preptics LLC (it moved into the `Preptics` GitHub organisation in October 2026). The code stays MIT; `LICENCE.md` now names "Preptics LLC and SkillTreeOSS contributors".
+- **Home** — canonical origin is `https://skilltree.preptics.com`. `lib/site.ts` is the one place for the brand, host, repository and operator details; metadata, `sitemap.xml`, `robots.txt`, footer, legal pages and the GitHub bot all read from it. Requests to the old hosts (`skilltreeoss.softexforge.io`, `skilltreeoss.vercel.app`) get a permanent (308) redirect to the same path on the new host.
+- **Brand spelling** — "SkilleTreeOSS" corrected to "SkillTreeOSS" everywhere; page titles no longer repeat the brand twice.
+- **GitHub bot** — builder pull requests target `Preptics/SkillTreeOSS`, and the PR footer links to the real builder instead of `skilltree.dev`.
+- **Terms and Privacy** (dated 18 November 2026) — name Preptics LLC as operator and data controller, give a private email for deletion and export requests (no more public issues), state that data is stored in Tokyo, Japan (the previous text said Frankfurt), list the optional GitHub connection, builder drafts and ratings, and state that submitted trees are MIT-licensed.
+- **Footer** — real GitHub and X links, Discussions instead of the placeholder Discord link, "A Preptics open-source project" instead of a hard-coded "All systems operational".
+- **Builder** — rejects resources without an author, without a real `https://` link or without a time estimate, and nodes without a description, matching what CI checks.
+- **Contribute page** — the minimal template now matches the schema (`difficulty: "easy"`, `resources` array).
+
+### Added
+- **`/about`** — what SkillTreeOSS is, how it joined Preptics, what changes and what does not, with Organization and SoftwareSourceCode structured data.
+- **CI** (`.github/workflows/ci.yml`) — validates every tree, type-checks and builds on every pull request; lint runs but does not block yet.
+- **`npm run validate`** (`scripts/validate-trees.mjs`) — dependency-free tree validator: required fields, id formats, unique ids, prerequisites that exist, no cycles, edges that point at real nodes, `totalNodes` that matches.
+- **`CODE_OF_CONDUCT.md`** (Contributor Covenant 2.1), **`SECURITY.md`**, a tracked **`.env.local.example`**, a **`Dockerfile`** (standalone output) and **`docs/Self-hosting.md`**.
+- Canonical URLs on the home, tree, about and legal pages.
+
+### Fixed
+- `ml-ai-engineer` declared `totalNodes: 12` but has 8 nodes.
+
+### Removed
+- `.github/FUNDING.yml` — it pointed at the founder's personal sponsorship links, not the project's.
 
 ---
 
@@ -89,10 +118,10 @@ _Tracked in [GitHub Issues](../../issues)._
 
 ### Planned
 - Admin dashboard for reviewing `resource_suggestions`
-- GitHub Actions JSON schema linting on PRs (`data/schema.json` + Zod)
 - Shareable progress image export
 
 ---
 
-[0.8.0]: https://github.com/nasimstg/SkillTreeOSS/compare/v0.7.0...v0.8.0
-[0.7.0]: https://github.com/nasimstg/SkillTreeOSS/releases/tag/v0.7.0
+[0.9.0]: https://github.com/Preptics/SkillTreeOSS/compare/v0.8.0...v0.9.0
+[0.8.0]: https://github.com/Preptics/SkillTreeOSS/compare/v0.7.0...v0.8.0
+[0.7.0]: https://github.com/Preptics/SkillTreeOSS/releases/tag/v0.7.0

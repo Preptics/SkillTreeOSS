@@ -1,12 +1,12 @@
 # System Architecture Document
 
-This document describes how the components of SkilleTreeOSS communicate and how data flows through the system.
+This document describes how the components of SkillTreeOSS communicate and how data flows through the system.
 
 ---
 
 ## Overview
 
-SkilleTreeOSS uses a **serverless, decoupled architecture**:
+SkillTreeOSS uses a **serverless, decoupled architecture**:
 
 - **Static curriculum content** (the skill trees) lives as JSON files in the GitHub repository — the single source of truth for what can be learned.
 - **Dynamic user data** (progress, ratings, votes) lives in Supabase (Postgres).

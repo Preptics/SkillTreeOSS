@@ -1,6 +1,6 @@
 # Security & Data Privacy Policy
 
-This document defines the security controls, Row Level Security (RLS) policies, authentication rules, and data minimisation principles for SkilleTreeOSS.
+This document defines the security controls, Row Level Security (RLS) policies, authentication rules, and data minimisation principles for SkillTreeOSS.
 
 ---
 
@@ -8,7 +8,7 @@ This document defines the security controls, Row Level Security (RLS) policies, 
 
 ### Providers
 
-SkilleTreeOSS uses **Supabase Auth** for identity management. Two OAuth providers are configured in the Supabase Dashboard:
+SkillTreeOSS uses **Supabase Auth** for identity management. Two OAuth providers are configured in the Supabase Dashboard:
 
 | Provider | Scope Requested | Data Used |
 |----------|----------------|-----------|
@@ -238,7 +238,7 @@ API routes that accept `user_id` in the request body **ignore it** — they alwa
 
 ### Bot Token (Anonymous Submissions)
 
-- `GITHUB_BOT_TOKEN` is a GitHub Personal Access Token scoped to `contents:write` and `pull_requests:write` on the `nasimstg/SkillTreeOSS` repository only.
+- `GITHUB_BOT_TOKEN` is a GitHub Personal Access Token scoped to `contents:write` and `pull_requests:write` on the `Preptics/SkillTreeOSS` repository only.
 - It is stored as a Vercel environment secret (server-side only).
 - It is **never exposed** in client-side code or API responses.
 - The bot account has no other repository access.
@@ -295,5 +295,5 @@ The callback validates the `state` JWT signature before exchanging the code for 
 
 - **Progress data:** Users can reset their progress at any time from the `/dashboard` "Reset Progress" button, which sets `completed_node_ids = []` for all their `user_progress` rows.
 - **Account deletion:** When a user's auth account is deleted from Supabase, all associated rows in `user_progress`, `tree_ratings`, `resource_feedback`, `resource_suggestions`, and `github_connections` are automatically cascade-deleted via `ON DELETE CASCADE` foreign key constraints.
-- **No analytics tracking:** SkilleTreeOSS does not include third-party analytics scripts. The only aggregate data stored is the `site_stats` singleton (total learners, total nodes unlocked) — which cannot be reverse-engineered to individual users.
+- **No analytics tracking:** SkillTreeOSS does not include third-party analytics scripts. The only aggregate data stored is the `site_stats` singleton (total learners, total nodes unlocked) — which cannot be reverse-engineered to individual users.
 - **No advertising:** No user data is shared with third parties for advertising purposes.

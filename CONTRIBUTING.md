@@ -1,6 +1,6 @@
-# Contributing to SkilleTreeOSS 🌳
+# Contributing to SkillTreeOSS 🌳
 
-First off, thank you for considering contributing to SkilleTreeOSS! Our mission is the **Democratization of Mastery**, and we can only achieve that by crowdsourcing the best learning paths from people who have actually walked them.
+First off, thank you for considering contributing to SkillTreeOSS! Our mission is the **Democratization of Mastery**, and we can only achieve that by crowdsourcing the best learning paths from people who have actually walked them.
 
 You do **not** need to be a programmer to contribute to this project. We welcome two types of contributions:
 
@@ -146,7 +146,8 @@ Here is a simple template:
 1. Fork this repository.
 2. Create a new branch (e.g., `add-urban-sketching-tree`).
 3. Add your `.json` file to the `data/trees/` folder.
-4. Submit a Pull Request — automated CI will validate your JSON against `data/schema.json`.
+4. Run `npm run validate` (or `node scripts/validate-trees.mjs data/trees/your-tree.json`) and fix anything it reports.
+5. Submit a Pull Request — CI runs the same validator on every pull request, plus lint, type-check and build.
 
 ---
 
@@ -202,9 +203,18 @@ Open `http://localhost:3000` for the main app and `http://localhost:3000/builder
 
 ## ✅ The Pull Request Process
 
-1. Ensure your code type-checks (`npx tsc --noEmit`), lints (`npm run lint`), and builds (`npm run build`).
+1. Ensure your trees validate (`npm run validate`) and your code type-checks (`npx tsc --noEmit`), lints (`npm run lint`), and builds (`npm run build`).
 2. Update `CHANGELOG.md` with a brief description of your change under `[Unreleased]`.
 3. Update `README.md` if you've added new environment variables, routes, or major features.
 4. Your PR will be reviewed by a maintainer within a few days.
+
+---
+
+## ⚖️ Licensing, conduct and security
+
+* **Your contribution is MIT-licensed.** By opening a pull request (directly or through the builder) you confirm you have the right to submit the work and you license it under the project's [MIT License](./LICENCE.md). You keep the copyright in your own contribution; there is no CLA to sign.
+* **Who maintains the project.** SkillTreeOSS is maintained by [Preptics LLC](https://preptics.com), which hosts the site at [skilltree.preptics.com](https://skilltree.preptics.com) and reviews pull requests. See [About](https://skilltree.preptics.com/about).
+* **Be kind.** Everyone taking part follows our [Code of Conduct](./CODE_OF_CONDUCT.md).
+* **Security issues** go to the private channel in [SECURITY.md](./SECURITY.md), never a public issue.
 
 Welcome to the party. Let's build the ultimate map of human knowledge!

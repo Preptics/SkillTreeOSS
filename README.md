@@ -1,6 +1,15 @@
-# 🌳 SkilleTreeOSS
+# 🌳 SkillTreeOSS
 
-**The Democratization of Mastery.** SkilleTreeOSS is an open-source, gamified learning platform. We map out complex skills (like "Full-Stack Developer," "ML Engineer," or "Photography") into beautiful, interactive RPG-style skill trees. Click a node, find the best free resource on the internet, and level up your life.
+[![CI](https://github.com/Preptics/SkillTreeOSS/actions/workflows/ci.yml/badge.svg)](https://github.com/Preptics/SkillTreeOSS/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-11d452.svg)](./LICENCE.md)
+[![Live site](https://img.shields.io/badge/live-skilltree.preptics.com-11d452.svg)](https://skilltree.preptics.com)
+[![good first issues](https://img.shields.io/github/issues/Preptics/SkillTreeOSS/good%20first%20issue.svg?color=11d452)](https://github.com/Preptics/SkillTreeOSS/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+
+**The Democratization of Mastery.** SkillTreeOSS is an open-source, gamified learning platform. We map out complex skills (like "Full-Stack Developer," "ML Engineer," or "Photography") into beautiful, interactive RPG-style skill trees. Click a node, find the best free resource on the internet, and level up your life.
+
+**Try it:** [skilltree.preptics.com](https://skilltree.preptics.com) · **Build a tree:** [skilltree.preptics.com/builder](https://skilltree.preptics.com/builder)
+
+> **SkillTreeOSS is now part of [Preptics](https://preptics.com).** In October 2026 the project moved into the GitHub organisation of Preptics LLC, and the site moved from `skilltreeoss.softexforge.io` to **[skilltree.preptics.com](https://skilltree.preptics.com)** (old links redirect). The code stays MIT-licensed, trees stay free, and contributions still happen here, in the open. [What changes and what does not →](https://skilltree.preptics.com/about)
 
 <!-- TODO: Hero GIF
      Record a ~10s GIF of the skill canvas in action:
@@ -11,7 +20,7 @@
      Suggested tool: ScreenToGif (Windows) or Kap (Mac). Export at 1280×720, ≤5 MB.
      Save to: docs/images/hero-demo.gif
 -->
-![SkilleTreeOSS — interactive skill tree demo](docs/images/hero-demo.gif)
+![SkillTreeOSS — interactive skill tree demo](docs/images/hero-demo.gif)
 
 ---
 
@@ -19,7 +28,7 @@
 
 Most learning sites are either hidden behind expensive paywalls or are overwhelming, messy lists of links. Self-learners often face a "curriculum gap" — they don't know *what* they should learn next.
 
-SkilleTreeOSS solves this by turning education into a visual progression system.
+SkillTreeOSS solves this by turning education into a visual progression system.
 
 * **Zero Overwhelm:** See exactly where you are and what to tackle next.
 * **Community Curated:** Nodes link to the single highest-voted free resource for that specific sub-skill.
@@ -123,6 +132,7 @@ Run these in order from `supabase/migrations/` via the Supabase SQL editor:
 | `20240101_tree_ratings.sql` | `tree_ratings` | 1–5 star ratings per user per tree |
 | `20240102_site_stats.sql` | `site_stats` | Singleton counter + Postgres trigger for landing-page stats |
 | `20240103_resource_suggestions.sql` | `resource_suggestions` | Community resource feedback queue |
+| `20240105_builder_tables.sql` | `tree_drafts`, `github_connections` | Builder drafts and optional GitHub connections for "Submit as PR" |
 
 > **`user_progress`** (existing) — stores `completed_node_ids text[]` per user per tree. Enrollment is implicit: any row with ≥1 completed node counts as enrolled.
 
@@ -132,7 +142,7 @@ Run these in order from `supabase/migrations/` via the Supabase SQL editor:
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/nasimstg/SkillTreeOSS.git
+git clone https://github.com/Preptics/SkillTreeOSS.git
 cd SkillTreeOSS
 ```
 
@@ -162,7 +172,13 @@ Open [http://localhost:3000](http://localhost:3000) in your browser. Go to [http
 
 The easiest way is the **in-app builder** at `/builder` — no coding required. See the [Builder section of CONTRIBUTING.md](./CONTRIBUTING.md) for a step-by-step walkthrough.
 
-For direct JSON editing, all skill trees live in `data/trees/` as JSON files. See **[CONTRIBUTING.md](./CONTRIBUTING.md)** for the full schema, validation rules, and PR process.
+For direct JSON editing, all skill trees live in `data/trees/` as JSON files. See **[CONTRIBUTING.md](./CONTRIBUTING.md)** for the full schema, validation rules, and PR process. Check your tree before opening a PR:
+
+```bash
+npm run validate
+```
+
+CI runs the same check, plus type-check and build, on every pull request.
 
 To change the featured trees on the landing page, edit `lib/featured-trees.ts`:
 ```ts
@@ -175,10 +191,27 @@ export const FEATURED_TREE_IDS = ['full-stack-dev', 'ml-ai-engineer', 'photograp
 
 We welcome new trees, bug fixes, UI improvements, and backend integrations. Check the **Issues** tab for `good first issue` and `help wanted` labels.
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for setup and developer guidelines.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for setup and developer guidelines. Everyone taking part follows the [Code of Conduct](./CODE_OF_CONDUCT.md); report security issues privately as described in [SECURITY.md](./SECURITY.md).
+
+---
+
+## 🏢 Who maintains SkillTreeOSS
+
+SkillTreeOSS was started by [Md Nasim Sheikh](https://github.com/nasimstg) in February 2026. Since October 2026 it has been maintained by **[Preptics LLC](https://preptics.com)**, the company behind Preptics, a test-prep platform whose first track is the Digital SAT. Preptics hosts the site at [skilltree.preptics.com](https://skilltree.preptics.com), pays for its infrastructure and reviews pull requests.
+
+What that means for contributors:
+
+- The code and every tree stay under the MIT License. You can fork and self-host the whole thing ([Self-hosting guide](./docs/Self-hosting.md)).
+- You keep the copyright in your own contributions; there is no CLA.
+- Roadmap and discussion stay public: [Roadmap](https://skilltree.preptics.com/roadmap) · [Discussions](https://github.com/Preptics/SkillTreeOSS/discussions).
+- Private matters (account deletion, conduct reports, press): support@preptics.com.
 
 ---
 
 ## 📜 License
 
-MIT — see [LICENCE.md](./LICENCE.md). Education should be free, and so is this code.
+MIT — see [LICENCE.md](./LICENCE.md). Copyright © 2026 Preptics LLC and SkillTreeOSS contributors. Education should be free, and so is this code.
+
+**The name.** The licence covers the code, not the SkillTreeOSS name and logo. Forks are welcome; if you run one publicly, please give it its own name and say it is based on SkillTreeOSS, so people know which site is which.
+
+<sub>Not to be confused with SkillTree at skilltreeplatform.dev, an unrelated open-source training platform.</sub>

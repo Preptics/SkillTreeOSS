@@ -127,12 +127,23 @@ export function validateTree(
     if (node.data.resources.length === 0) {
       errors.push({ field: `node:${node.id}:resources`, message: `Node "${node.data.label || node.id}" must have at least one resource` })
     }
+    if (!node.data.description?.trim()) {
+      errors.push({ field: `node:${node.id}:description`, message: `Node "${node.data.label || node.id}" is missing a description` })
+    }
+    // Keep these in step with scripts/validate-trees.mjs, which CI runs on every
+    // pull request — a tree the builder accepts must also pass CI.
     for (const r of node.data.resources) {
-      if (!r.url.startsWith('https://')) {
-        errors.push({ field: `node:${node.id}:resource:${r.id}:url`, message: `Resource "${r.title}" URL must start with https://` })
+      if (!isFullHttpsUrl(r.url)) {
+        errors.push({ field: `node:${node.id}:resource:${r.id}:url`, message: `Resource "${r.title || 'untitled'}" needs a full link starting with https://` })
       }
       if (!r.title.trim()) {
         errors.push({ field: `node:${node.id}:resource:${r.id}:title`, message: `A resource in "${node.data.label || node.id}" is missing a title` })
+      }
+      if (!r.author?.trim()) {
+        errors.push({ field: `node:${node.id}:resource:${r.id}:author`, message: `Resource "${r.title || 'untitled'}" needs an author or source name` })
+      }
+      if (!(r.estimatedHours > 0)) {
+        errors.push({ field: `node:${node.id}:resource:${r.id}:estimatedHours`, message: `Resource "${r.title || 'untitled'}" needs an estimated time above 0 hours` })
       }
     }
   }
@@ -153,6 +164,15 @@ export function validateTree(
   }
 
   return errors
+}
+
+function isFullHttpsUrl(value: string): boolean {
+  try {
+    const u = new URL(value)
+    return u.protocol === 'https:' && u.hostname.includes('.')
+  } catch {
+    return false
+  }
 }
 
 function hasCycle(nodeIds: string[], edges: Edge[]): boolean {

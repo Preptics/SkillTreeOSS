@@ -1,8 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { readdirSync } from 'fs'
 import { join } from 'path'
-
-const BASE_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://skilltreeoss.vercel.app'
+import { SITE_URL as BASE_URL } from '@/lib/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Static pages
@@ -30,6 +29,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
+    },
+    {
+      url: `${BASE_URL}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${BASE_URL}/roadmap`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.4,
     },
   ]
 

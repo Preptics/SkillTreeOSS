@@ -6,7 +6,7 @@
     "description": "Comprehensive path to becoming an AI and Machine Learning Engineer. Covers foundational math, classic ML, deep learning, and MLOps.",
     "version": "1.0",
     "estimatedMonths": 10,
-    "totalNodes": 12,
+    "totalNodes": 8,
     "icon": "psychology",
     "nodes": [
         {

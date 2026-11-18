@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  trees:
+    name: Validate skill trees
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # No install needed: the validator has no dependencies, so tree-only
+      # pull requests get an answer in seconds.
+      - run: node scripts/validate-trees.mjs
+
+  app:
+    name: Type-check, lint and build
+    runs-on: ubuntu-latest
+    env:
+      # Placeholders: the build never calls Supabase, it only needs the variables to exist.
+      NEXT_PUBLIC_SUPABASE_URL: https://placeholder.supabase.co
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: placeholder-anon-key
+      NEXT_TELEMETRY_DISABLED: 1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - name: Lint
+        # The codebase has a backlog of lint errors from newer React rules.
+        # Reported here but not blocking until that backlog is cleared.
+        run: npm run lint
+        continue-on-error: true
+      - run: npm run build

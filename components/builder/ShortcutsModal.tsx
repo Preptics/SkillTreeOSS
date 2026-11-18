@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { REPO_URL } from '@/lib/site'
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
 
@@ -230,7 +231,7 @@ export function ShortcutsModal({ onClose }: Props) {
             {' '}anytime to open this panel
           </p>
           <a
-            href="https://github.com/nasimstg/SkillTreeOSS"
+            href={REPO_URL}
             target="_blank"
             rel="noreferrer"
             className="text-[11px] text-slate-600 hover:text-slate-400 transition-colors flex items-center gap-1"

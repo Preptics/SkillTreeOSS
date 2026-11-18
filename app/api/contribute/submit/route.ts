@@ -5,6 +5,7 @@ import { validateTree } from '@/lib/builder-utils'
 import type { SkillTree } from '@/types/tree'
 import type { Node, Edge } from '@xyflow/react'
 import type { BuilderNodeData } from '@/lib/builder-utils'
+import { GITHUB_OWNER, GITHUB_REPO } from '@/lib/site'
 
 interface SubmitBody {
   tree:      SkillTree
@@ -116,8 +117,8 @@ async function checkTreeExists(treeId: string): Promise<boolean> {
     const { Octokit } = await import('@octokit/rest')
     const octokit = new Octokit({ auth: process.env.GITHUB_BOT_TOKEN })
     await octokit.rest.repos.getContent({
-      owner: 'nasimstg',
-      repo:  'SkillTreeOSS',
+      owner: GITHUB_OWNER,
+      repo:  GITHUB_REPO,
       path:  `data/trees/${treeId}.json`,
     })
     return true

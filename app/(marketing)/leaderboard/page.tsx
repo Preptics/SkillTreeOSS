@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { REPO_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Leaderboard — SkilleTreeOSS',
+  title: 'Leaderboard',
   description: 'Global XP rankings and streak competitions. Coming soon.',
 }
 
@@ -43,7 +44,7 @@ export default function LeaderboardPage() {
               Compete with learners worldwide. Rank up by completing nodes, maintaining streaks, and earning XP.
             </p>
             <a
-              href="https://github.com/nasimstg/SkillTreeOSS"
+              href={REPO_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"

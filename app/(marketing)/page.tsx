@@ -5,9 +5,11 @@ import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { FEATURED_TREE_IDS } from '@/lib/featured-trees'
 import type { SkillTree } from '@/types/tree'
 import type { Metadata } from 'next'
+import { OPERATOR } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'SkillTreeOSS — Democratize Mastery',
+  title: { absolute: 'SkillTreeOSS — Democratize Mastery' },
+  alternates: { canonical: '/' },
   description:
     'Interactive, gamified learning paths built on the best free resources the internet has to offer. Level up your life, one node at a time.',
   openGraph: {
@@ -205,10 +207,14 @@ export default async function LandingPage() {
             }}
           />
           <div className="relative z-10 mx-auto max-w-4xl text-center flex flex-col items-center gap-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-bold text-primary uppercase tracking-wider">
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-bold text-primary uppercase tracking-wider hover:bg-primary/20 transition-colors"
+            >
               <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-              v0.8 · Visual Builder is live
-            </div>
+              News · SkillTreeOSS is now part of {OPERATOR.shortName}
+              <span className="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span>
+            </Link>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight tracking-tight text-gradient-primary">
               The Democratization <br />of Mastery.
             </h1>

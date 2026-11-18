@@ -1,6 +1,6 @@
 # Product Requirements Document (PRD)
 
-**Project Name:** SkilleTreeOSS
+**Project Name:** SkillTreeOSS
 **Version:** 0.8.1
 **Objective:** To provide an interactive, gamified learning platform where complex disciplines are mapped into visual "skill trees" connected to the internet's best free resources — and to give anyone the tools to create and publish those trees without writing code.
 

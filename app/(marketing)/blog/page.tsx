@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { REPO_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Blog — SkilleTreeOSS',
+  title: 'Blog',
   description: 'Articles on learning science, contributor spotlights, and platform updates. Coming soon.',
 }
 
@@ -34,13 +35,13 @@ export default function BlogPage() {
               Planned Feature
             </div>
             <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
-              SkilleTreeOSS Blog
+              SkillTreeOSS Blog
             </h1>
             <p className="text-slate-400 text-lg max-w-md mx-auto mb-8">
               Articles on learning science, contributor spotlights, tree announcements, and platform updates.
             </p>
             <a
-              href="https://github.com/nasimstg/SkillTreeOSS"
+              href={REPO_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"

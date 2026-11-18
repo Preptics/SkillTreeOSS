@@ -1,6 +1,6 @@
 # Testing & QA Strategy
 
-This document defines the testing approach for SkilleTreeOSS — covering unit tests, integration tests, and end-to-end (E2E) tests for both the viewer canvas and the visual builder.
+This document defines the testing approach for SkillTreeOSS — covering unit tests, integration tests, and end-to-end (E2E) tests for both the viewer canvas and the visual builder.
 
 ---
 

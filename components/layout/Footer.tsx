@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { DISCUSSIONS_URL, LICENSE_URL, OPERATOR, REPO_URL } from '@/lib/site'
 
 export default function Footer() {
   return (
@@ -11,19 +12,23 @@ export default function Footer() {
               <div className="flex h-6 w-6 items-center justify-center rounded bg-primary/20 text-primary">
                 <span className="material-symbols-outlined text-sm">account_tree</span>
               </div>
-              <span className="text-lg font-bold text-white">SkilleTreeOSS</span>
+              <span className="text-lg font-bold text-white">SkillTreeOSS</span>
             </div>
             <p className="text-sm text-slate-400 max-w-xs mb-6 leading-relaxed">
               An open-source initiative to map human knowledge into gamified skill trees.
-              Built by the community, for the community.
+              Built with the community, maintained by{' '}
+              <a href={OPERATOR.referralUrl} className="text-slate-300 hover:text-primary transition-colors">
+                {OPERATOR.shortName}
+              </a>
+              .
             </p>
             <div className="flex gap-4">
               <a
-                href="https://github.com"
+                href={REPO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-white transition-colors"
-                aria-label="GitHub"
+                aria-label="SkillTreeOSS on GitHub"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path
@@ -34,14 +39,14 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://twitter.com"
+                href={OPERATOR.xUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-white transition-colors"
-                aria-label="Twitter / X"
+                aria-label="Preptics on X"
               >
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </a>
             </div>
@@ -52,6 +57,7 @@ export default function Footer() {
             <h5 className="mb-4 font-bold text-white">Platform</h5>
             <ul className="space-y-2 text-sm text-slate-400">
               <li><Link href="/explore" className="hover:text-primary transition-colors">Browse Trees</Link></li>
+              <li><Link href="/builder" className="hover:text-primary transition-colors">Tree Builder</Link></li>
               <li><Link href="/roadmap" className="hover:text-primary transition-colors">Roadmap</Link></li>
               <li><Link href="/leaderboard" className="hover:text-primary transition-colors">Leaderboard</Link></li>
             </ul>
@@ -61,9 +67,18 @@ export default function Footer() {
           <div>
             <h5 className="mb-4 font-bold text-white">Community</h5>
             <ul className="space-y-2 text-sm text-slate-400">
-              <li><a href="#" className="hover:text-primary transition-colors">Discord</a></li>
               <li><Link href="/contribute" className="hover:text-primary transition-colors">Contribute</Link></li>
-              <li><Link href="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
+              <li>
+                <a href={DISCUSSIONS_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  Discussions
+                </a>
+              </li>
+              <li>
+                <a href={REPO_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  Source code
+                </a>
+              </li>
+              <li><Link href="/about" className="hover:text-primary transition-colors">About</Link></li>
             </ul>
           </div>
 
@@ -73,17 +88,26 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-slate-400">
               <li><Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
-              <li><a href="https://github.com" className="hover:text-primary transition-colors">MIT License</a></li>
+              <li>
+                <a href={LICENSE_URL} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  MIT License
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-slate-500">© {new Date().getFullYear()} SkilleTreeOSS. Open source under MIT License.</p>
-          <div className="flex items-center gap-2 text-xs text-slate-500">
-            <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-            All systems operational
-          </div>
+        <div className="mt-12 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+          <p className="text-xs text-slate-500">
+            © {new Date().getFullYear()} {OPERATOR.legalName} and SkillTreeOSS contributors. Code under the MIT License.
+          </p>
+          <a
+            href={OPERATOR.referralUrl}
+            className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-300 transition-colors"
+          >
+            <span className="material-symbols-outlined text-sm" aria-hidden="true">school</span>
+            A {OPERATOR.shortName} open-source project
+          </a>
         </div>
       </div>
     </footer>

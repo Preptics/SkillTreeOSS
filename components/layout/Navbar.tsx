@@ -6,6 +6,7 @@ import { useSkillTreeStore } from '@/lib/store'
 import { createClient } from '@/lib/supabase'
 import { getLevelInfo } from '@/lib/utils'
 import type { UserProfile } from '@/types/user'
+import { REPO_URL } from '@/lib/site'
 
 // ─── constants ────────────────────────────────────────────────────────────────
 
@@ -262,7 +263,7 @@ export default function Navbar({ variant = 'landing' }: NavbarProps) {
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20 text-primary transition group-hover:bg-primary/30">
             <span className="material-symbols-outlined text-xl">account_tree</span>
           </div>
-          <span className="text-xl font-bold tracking-tight text-white">SkilleTreeOSS</span>
+          <span className="text-xl font-bold tracking-tight text-white">SkillTreeOSS</span>
         </Link>
 
         {/* Desktop nav */}
@@ -277,7 +278,7 @@ export default function Navbar({ variant = 'landing' }: NavbarProps) {
             Build
           </Link>
           <a
-            href="https://github.com/nasimstg/SkillTreeOSS"
+            href={REPO_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-medium text-slate-400 hover:text-primary transition-colors"
@@ -334,7 +335,7 @@ export default function Navbar({ variant = 'landing' }: NavbarProps) {
             </Link>
           ))}
           <a
-            href="https://github.com/nasimstg/SkillTreeOSS"
+            href={REPO_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-medium text-slate-300 hover:text-primary py-3.5 border-b border-white/[0.04] transition-colors"

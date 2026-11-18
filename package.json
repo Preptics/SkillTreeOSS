@@ -1,12 +1,14 @@
 {
   "name": "skilltree",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "validate": "node scripts/validate-trees.mjs"
   },
   "dependencies": {
     "@dagrejs/dagre": "^2.0.4",

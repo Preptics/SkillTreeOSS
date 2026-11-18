@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: Props) {
     return {
       title: tree.title,
       description: tree.description,
+      alternates: { canonical: `/tree/${slug}` },
       openGraph: {
         title: `${tree.title} — SkillTreeOSS`,
         description: tree.description,

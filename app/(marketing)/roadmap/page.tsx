@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { DISCUSSIONS_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Roadmap — SkilleTreeOSS',
-  description: 'See what\'s planned, in progress, and shipped for SkilleTreeOSS platform.',
+  title: 'Roadmap',
+  description: 'See what\'s planned, in progress, and shipped on the SkillTreeOSS platform.',
 }
 
 const SHIPPED = [
@@ -85,13 +86,13 @@ export default function RoadmapPage() {
               What we&apos;re building
             </h1>
             <p className="text-slate-400 text-lg max-w-xl mx-auto">
-              SkilleTreeOSS is open source. Suggest features or vote on ideas by opening a GitHub Discussion.
+              SkillTreeOSS is open source. Suggest features or vote on ideas by opening a GitHub Discussion.
             </p>
 
             {/* CTAs */}
             <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
               <a
-                href="https://github.com/nasimstg/SkillTreeOSS/discussions"
+                href={DISCUSSIONS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline"

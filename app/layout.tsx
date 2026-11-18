@@ -4,6 +4,7 @@ import './globals.css'
 import AuthProvider from '@/components/auth/AuthProvider'
 import InstallPrompt from '@/components/pwa/InstallPrompt'
 import Script from 'next/script'
+import { OPERATOR, SITE_NAME, SITE_URL } from '@/lib/site'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -21,13 +22,15 @@ const APP_DESCRIPTION =
   'Interactive, gamified learning paths built on the best free resources the internet has to offer. Level up your life, one node at a time.'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'https://skilltreeoss.vercel.app'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'SkillTreeOSS — Democratize Mastery',
     template: '%s — SkillTreeOSS',
   },
   description: APP_DESCRIPTION,
   keywords: ['skill tree', 'learning path', 'free resources', 'gamified learning', 'open source'],
+  applicationName: SITE_NAME,
+  publisher: OPERATOR.legalName,
   openGraph: {
     type: 'website',
     siteName: 'SkillTreeOSS',

@@ -19,7 +19,7 @@ import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const TREES_DIR = join(__dirname, '..', 'data', 'trees')
-const REPO = 'nasimstg/SkillTreeOSS'
+const REPO = 'Preptics/SkillTreeOSS'
 
 // ─── Labels to create (idempotent — skips if already exists) ─────────────────
 

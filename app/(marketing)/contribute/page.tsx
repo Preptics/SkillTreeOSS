@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { REPO_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Contribute — SkilleTreeOSS',
+  title: 'Contribute',
   description: 'Add your own skill tree. Use the visual builder or submit a JSON pull request on GitHub.',
 }
 
@@ -11,7 +12,7 @@ const STEPS = [
     icon: 'fork_right',
     title: 'Fork the repository',
     description: 'Fork the Skill-Tree GitHub repo and clone it locally.',
-    code: 'git clone https://github.com/nasimstg/SkillTreeOSS.git',
+    code: `git clone ${REPO_URL}.git`,
   },
   {
     icon: 'draft',
@@ -35,9 +36,9 @@ const STEPS = [
 
 const RULES = [
   'All linked resources must be **free** and publicly accessible.',
-  'Each node must have exactly **one** primary resource.',
+  'Each node needs at least **one** resource — put the best one first.',
   'Resources should be high quality — prefer established creators and platforms.',
-  'Node positions (`x`, `y`) should form a readable left-to-right or top-to-bottom flow.',
+  'Leave out node `position` — the canvas lays nodes out automatically.',
   'The `requires` array must only reference IDs that exist in the same tree.',
   'Tree IDs and node IDs must be lowercase, hyphenated (e.g. `full-stack-dev`, `html-basics`).',
 ]
@@ -65,7 +66,7 @@ export default function ContributePage() {
               coding, painting, gardening, music production — via a pull request.
             </p>
             <a
-              href="https://github.com/nasimstg/SkillTreeOSS"
+              href={REPO_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-primary hover:bg-primary/80 text-background-dark font-bold px-6 py-3 rounded-xl transition-colors"
@@ -172,7 +173,7 @@ export default function ContributePage() {
   "treeId": "your-tree-id",
   "title": "Your Skill Title",
   "category": "Technology",
-  "difficulty": "beginner",
+  "difficulty": "easy",
   "description": "A short description of this path.",
   "version": "1.0",
   "estimatedMonths": 2,
@@ -185,14 +186,17 @@ export default function ContributePage() {
       "description": "What this node teaches.",
       "icon": "start",
       "zone": "Foundation",
-      "resource": {
-        "title": "Resource title",
-        "url": "https://youtube.com/watch?v=...",
-        "type": "video",
-        "author": "Creator Name",
-        "estimatedHours": 1
-      },
-      "position": { "x": 0, "y": 0 },
+      "resources": [
+        {
+          "id": "first-node-r1",
+          "title": "Resource title",
+          "url": "https://www.youtube.com/watch?v=...",
+          "type": "video",
+          "author": "Creator Name",
+          "estimatedHours": 1,
+          "isFree": true
+        }
+      ],
       "requires": []
     }
   ],
@@ -217,7 +221,7 @@ export default function ContributePage() {
                 Use the Builder
               </Link>
               <a
-                href="https://github.com/nasimstg/SkillTreeOSS"
+                href={REPO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border border-white/10 hover:border-primary/40 text-slate-300 hover:text-white font-bold px-6 py-3 rounded-xl transition-colors text-sm"

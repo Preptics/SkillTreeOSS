@@ -1,8 +1,10 @@
 import { Octokit } from '@octokit/rest'
 import type { SkillTree } from '@/types/tree'
 
-const OWNER = 'nasimstg'
-const REPO = 'SkillTreeOSS'
+import { GITHUB_OWNER, GITHUB_REPO, SITE_URL } from '@/lib/site'
+
+const OWNER = GITHUB_OWNER
+const REPO = GITHUB_REPO
 const BASE_BRANCH = 'main'
 
 function treePath(treeId: string) {
@@ -78,7 +80,7 @@ export async function createTreePR(
     title: isEdit
       ? `[Update] ${tree.title} skill tree`
       : `[New Tree] ${tree.title}`,
-    body: buildPrBody(tree, 'Anonymous contributor via SkilleTree Builder', isEdit),
+    body: buildPrBody(tree, 'Anonymous contributor via SkillTree Builder', isEdit),
   })
 
   return { prUrl: pr.html_url }
@@ -134,7 +136,7 @@ export async function createTreePRFromFork(
     title: isEdit
       ? `[Update] ${tree.title} skill tree`
       : `[New Tree] ${tree.title}`,
-    body: buildPrBody(tree, `@${githubUsername} via SkilleTree Builder`, isEdit),
+    body: buildPrBody(tree, `@${githubUsername} via SkillTree Builder`, isEdit),
   })
 
   return { prUrl: pr.html_url }
@@ -185,5 +187,5 @@ function buildPrBody(tree: SkillTree, author: string, isEdit: boolean): string {
 - [ ] \`totalNodes\` equals \`nodes.length\`
 
 ---
-*Submitted via the [SkilleTree Builder](https://skilltree.dev/builder)*`
+*Submitted via the [SkillTree Builder](${SITE_URL}/builder)*`
 }

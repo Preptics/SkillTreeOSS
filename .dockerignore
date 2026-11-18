@@ -1,0 +1,11 @@
+.git
+.github
+.next
+.vercel
+.claude
+node_modules
+mock-design
+coverage
+*.tsbuildinfo
+# Secrets never enter the build context.
+.env*
